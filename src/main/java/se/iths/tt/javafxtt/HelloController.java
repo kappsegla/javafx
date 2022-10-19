@@ -1,5 +1,6 @@
 package se.iths.tt.javafxtt;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,19 +14,23 @@ public class HelloController {
     HelloModel helloModel = new HelloModel();
     @FXML
     private Label welcomeText;
-
     public TextField textField1;
     public Button button1;
 
     @FXML
     protected void initialize(){
-        textField1.textProperty().bindBidirectional(helloModel.textProperty());
-        welcomeText.textProperty().bind(helloModel.textProperty());
+        textField1.textProperty().bindBidirectional(helloModel.urlProperty());
+        welcomeText.textProperty().bind(helloModel.quoteProperty());
     }
 
     @FXML
-    protected void onHelloButtonClick() {
-     helloModel.setText("");
+    protected void onHelloButtonClick() throws InterruptedException {
+//       new Thread(()->{
+//           Platform.runLater(()->
+//           button1.setText("From thread"));
+//       }).start();
+
+         helloModel.loadNewQuote();
     }
 
     public void labelClicked(MouseEvent mouseEvent) {

@@ -11,5 +11,5 @@
     </padding>
     <Label fx:id="welcomeText" onMouseClicked="#labelClicked" />
     <TextField fx:id="textField1"/>
-    <Button fx:id="button1" onAction="#onHelloButtonClick" text="Hello!" />
+    <Button fx:id="button1" onAction="#onHelloButtonClick" text="Get Quote!" />
   </VBox>
