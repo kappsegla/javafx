@@ -4,12 +4,15 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import se.iths.tt.javafxtt.model.SnakeModel;
 
 public class GameViewController {
 
     public Canvas canvas;
 
     public GraphicsContext context;
+
+    public SnakeModel snake = new SnakeModel();
 
     public void initialize(){
         context = canvas.getGraphicsContext2D();
