@@ -2,7 +2,6 @@ package se.iths.tt.javafxtt.controller;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import se.iths.tt.javafxtt.GameAnimation;
@@ -22,8 +21,6 @@ public class GameViewController {
         gameAnimation.start();
     }
 
-    //Todo: Keyboard input
-
     GameAnimation gameAnimation = new GameAnimation() {
         float time;
 
@@ -39,16 +36,15 @@ public class GameViewController {
         }
     };
 
-
     public void render() {
         context.setFill(Color.web("#eddeaf"));
         context.fillRect(0, 0, 400, 400);
         context.setFill(Color.web("#004B87"));
-        context.fillRect((snake.getPosition().x() * 10), (snake.getPosition().y() * 10), 10, 10);
+        for (var segment : snake.getPositionList())
+            context.fillRect((segment.x() * 10), (segment.y() * 10), 10, 10);
     }
 
     public void keyPressed(KeyEvent keyEvent) {
-        System.out.println("Key pressed");
         switch (keyEvent.getCode()) {
             case UP -> snake.setUp();
             case DOWN -> snake.setDown();
