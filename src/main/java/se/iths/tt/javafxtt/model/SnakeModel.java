@@ -17,5 +17,15 @@ public class SnakeModel {
     public Position getPosition() {
         return position;
     }
+
+    public void update() {
+        switch (direction) {
+            case UP -> position = new Position(position.x(), position.y() - 1);
+            case DOWN -> position = new Position(position.x(), position.y() + 1);
+            case LEFT -> position = new Position(position.x() - 1, position.y());
+            case RIGHT -> position = new Position(position.x() + 1, position.y());
+        }
+
+    }
 }
 
