@@ -25,7 +25,26 @@ public class SnakeModel {
             case LEFT -> position = new Position(position.x() - 1, position.y());
             case RIGHT -> position = new Position(position.x() + 1, position.y());
         }
+    }
 
+    public void setUp() {
+        if (!direction.equals(Direction.DOWN))
+            this.direction = Direction.UP;
+    }
+
+    public void setDown() {
+        if (!direction.equals(Direction.UP))
+            this.direction = Direction.DOWN;
+    }
+
+    public void setRight() {
+        if (!direction.equals(Direction.LEFT))
+            this.direction = Direction.RIGHT;
+    }
+
+    public void setLeft() {
+        if (!direction.equals(Direction.RIGHT))
+            this.direction = Direction.LEFT;
     }
 }
 
