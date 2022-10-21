@@ -1,4 +1,4 @@
-package se.iths.tt.javafxtt;
+package se.iths.tt.javafxtt.controller;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,7 +23,7 @@ public class GameViewController {
     public void onCanvasClicked(MouseEvent mouseEvent) {
         context.setFill(Color.web("#eddeaf"));
         context.fillRect(0,0,400,400);
-        context.setFill(Color.BLUE);
+        context.setFill(Color.web("#004B87"));
         context.fillRect(mouseEvent.getX()-(2.5), mouseEvent.getY()-(2.5), 5,5);
     }
 }
