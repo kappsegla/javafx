@@ -68,7 +68,5 @@ public class SnakeModel {
         if (!direction.equals(Direction.RIGHT))
             this.direction = Direction.LEFT;
     }
-    
-
 }
 
