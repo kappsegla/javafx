@@ -21,6 +21,10 @@ public class SnakeModel {
         this.positionList.add(position);
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     public Position getPosition() {
         return position;
     }
