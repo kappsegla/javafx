@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SnakeModelTest {
     SnakeModel snake = new SnakeModel();
 
     @Test
-    void createNewSnakeModelPositionsSnakeAt1919(){
-        var expected = new Position(19,19);
+    void createNewSnakeModelPositionsSnakeAt1919() {
+        var expected = new Position(19, 19);
         var actual = snake.getPosition();
 
         assertEquals(expected, actual);
@@ -23,7 +25,7 @@ class SnakeModelTest {
         snake.setUp();
         snake.update();
 
-        var expected = new Position(19,18);
+        var expected = new Position(19, 18);
         var actual = snake.getPosition();
         assertEquals(expected, actual);
     }
@@ -33,10 +35,10 @@ class SnakeModelTest {
         snake.setDown();
         snake.update();
 
-        var expected = new Position(19,18);
+        var expected = new Position(19, 18);
         var actual = snake.getPosition();
         assertEquals(expected, actual);
-        assertEquals(Direction.UP,snake.getDirection());
+        assertEquals(Direction.UP, snake.getDirection());
     }
 
     @Test
@@ -45,13 +47,11 @@ class SnakeModelTest {
         snake.update();
         snake.setLeft();
         snake.update();
-        var expected = new Position(17,19);
+        var expected = new Position(17, 19);
         var actual = snake.getPosition();
         assertEquals(expected, actual);
-        assertEquals(Direction.LEFT,snake.getDirection());
+        assertEquals(Direction.LEFT, snake.getDirection());
     }
-
-
 
 
 }
