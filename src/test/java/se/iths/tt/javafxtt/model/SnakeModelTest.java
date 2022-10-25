@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static se.iths.tt.javafxtt.model.SnakeModel.TOP_EDGE;
 
 class SnakeModelTest {
+    private static final int DISTANCE_TO_GAMEBOARD_EDGE = 19;
     SnakeModel snake = new SnakeModel();
 
     @Test
@@ -52,6 +54,36 @@ class SnakeModelTest {
         assertEquals(expected, actual);
         assertEquals(Direction.LEFT, snake.getDirection());
     }
+
+    @Test
+    void callingUpdateOnSnakePositionedAtPosYZeroAndDirectionUpShouldNotMovePosition() {
+        //Arrange
+        for (int i = 0; i < DISTANCE_TO_GAMEBOARD_EDGE; i++) {
+            snake.update();
+        }
+        int TOP_EDGE = 0;
+        assertEquals(TOP_EDGE, snake.getPosition().y());
+        //Act
+        snake.update();
+        //Assert
+        assertEquals(new Position(19,0),snake.getPosition());
+    }
+
+    @Test
+    void callingUpdateOnSnakePositionedAtPosYZeroAndDirectionLeftShouldMovePosition() {
+        //Arrange
+        for (int i = 0; i < DISTANCE_TO_GAMEBOARD_EDGE; i++) {
+            snake.update();
+        }
+
+        assertEquals(TOP_EDGE, snake.getPosition().y());
+        //Act
+        snake.setLeft();
+        snake.update();
+        //Assert
+        assertEquals(new Position(18,0),snake.getPosition());
+    }
+
 
 
 }
