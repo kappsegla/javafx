@@ -5,10 +5,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import se.iths.tt.javafxtt.GameAnimation;
+import se.iths.tt.javafxtt.model.Position;
 import se.iths.tt.javafxtt.model.SnakeModel;
 
 public class GameViewController {
 
+    public static final int LEFT_WALL = 10;
     public Canvas canvas;
 
     public GraphicsContext context;
@@ -37,11 +39,23 @@ public class GameViewController {
     };
 
     public void render() {
+        prepare();
+        renderSnake();
+    }
+
+    private void renderSnake() {
+        for (var segment : snake.getPositionList())
+            renderSnakeSegment(segment);
+    }
+
+    private void renderSnakeSegment(Position segment) {
+        context.setFill(Color.web("#004B87"));
+        context.fillRect((segment.x() * 10), (segment.y() * 10), 10, 10);
+    }
+
+    private void prepare() {
         context.setFill(Color.web("#eddeaf"));
         context.fillRect(0, 0, 400, 400);
-        context.setFill(Color.web("#004B87"));
-        for (var segment : snake.getPositionList())
-            context.fillRect((segment.x() * 10), (segment.y() * 10), 10, 10);
     }
 
     public void keyPressed(KeyEvent keyEvent) {
