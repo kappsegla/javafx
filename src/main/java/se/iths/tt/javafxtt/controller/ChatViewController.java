@@ -20,7 +20,6 @@ public class ChatViewController {
        sendButton.textProperty().bind(Bindings.when(model.messageProperty().isEqualTo("secret"))
                .then("Hemligt")
                .otherwise("Send message"));
-
     }
 
     public void sendMessageClicked() {

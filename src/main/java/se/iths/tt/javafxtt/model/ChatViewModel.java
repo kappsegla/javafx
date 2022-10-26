@@ -1,16 +1,50 @@
 package se.iths.tt.javafxtt.model;
 
+import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.*;
+import java.net.Socket;
+
 public class ChatViewModel {
 
     StringProperty message = new SimpleStringProperty();
 
     ObservableList<String> observableList = FXCollections.observableArrayList();
+    private Socket socket;
+    private final PrintWriter writer;
+    private final BufferedReader reader;
+
+
+    public ChatViewModel() {
+        try {
+            socket = new Socket("localhost", 8000);
+            OutputStream output = socket.getOutputStream();
+            writer = new PrintWriter(output, true);
+            InputStream input = socket.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(input));
+
+            var thread = new Thread(() -> {
+                try {
+                    while (true) {
+                        String line = reader.readLine();
+                        Platform.runLater(()-> observableList.add(line));
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            thread.setDaemon(true);
+            thread.start();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public String getMessage() {
@@ -34,7 +68,8 @@ public class ChatViewModel {
     }
 
     public void sendMessage() {
-        getObservableList().add(getMessage());
+        writer.println(getMessage());
+        //getObservableList().add(getMessage());
         setMessage("");
     }
 }
