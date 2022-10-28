@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="146.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="se.iths.tt.javafxtt.controller.ProductCellViewController">
+    <Label fx:id="name" layoutX="50.0" layoutY="31.0" text="Label"/>
+    <Label fx:id="ean" layoutX="50.0" layoutY="64.0" text="Label"/>
+    <Label fx:id="price" layoutX="243.0" layoutY="31.0" text="Label"/>
+    <Label fx:id="category" layoutX="243.0" layoutY="64.0" text="Label"/>
+</AnchorPane>

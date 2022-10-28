@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.BigDecimalStringConverter;
+import se.iths.tt.javafxtt.factory.ProductCell;
 import se.iths.tt.javafxtt.inventory.Product;
 import se.iths.tt.javafxtt.model.ProductModel;
 
@@ -30,6 +31,7 @@ public class ProductViewController {
 
     public void initialize() {
         productListView.setItems(productModel.getProductObservableList());
+        productListView.setCellFactory( listView -> new ProductCell());
         nameTextField.textProperty().bindBidirectional(productModel.productNameProperty());
         priceTextField.textProperty().bindBidirectional(productModel.productPriceProperty(),new BigDecimalStringConverter());
         eanTextField.textProperty().bindBidirectional(productModel.productEanProperty());
