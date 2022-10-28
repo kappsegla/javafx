@@ -5,8 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import se.iths.tt.javafxtt.inventory.Product;
+import se.iths.tt.javafxtt.model.ProductModel;
 
 public class ProductViewController {
+
+    ProductModel productModel = new ProductModel();
+
     public TextField nameTextField;
     public TextField eanTextField;
     public TextField priceTextField;
@@ -16,6 +20,7 @@ public class ProductViewController {
     public ListView<Product> productListView;
 
     public void initialize(){
+
 
 
     }
