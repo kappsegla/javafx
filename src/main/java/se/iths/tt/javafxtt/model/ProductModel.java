@@ -107,7 +107,7 @@ public class ProductModel {
             outPut.append("\n");
         }
         try {
-            Files.writeString(file,outPut.toString());
+            Files.writeString(file, outPut.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
