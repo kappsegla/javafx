@@ -6,7 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import se.iths.tt.javafxtt.inventory.Category;
 import se.iths.tt.javafxtt.inventory.Product;
+import se.iths.tt.javafxtt.inventory.ProductBuilder;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -82,8 +84,14 @@ public class ProductModel {
     }
 
     public void createProduct() {
+        var product = new ProductBuilder()
+                .setProductName(getProductName())
+                .setCategory(Category.of(getProductCategory()))
+                .setEanCode(getProductEan())
+                .setPrice(getProductPrice())
+                .createProduct();
 
-
+        productObservableList.add(product);
     }
 
     public void saveToFile(Path file) {
