@@ -1,7 +1,5 @@
 package se.iths.tt.javafxtt;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -9,13 +7,12 @@ public abstract class Shape {
     private final double x;
     private final double y;
 
-    private ObjectProperty<Color> color = new SimpleObjectProperty<>();
-
+    private Color color;
 
     public Shape(double x, double y) {
         this.x = x;
         this.y = y;
-        color.set(Color.BLACK);
+        color = Color.BLACK;
     }
 
     public double getX() {
@@ -27,15 +24,11 @@ public abstract class Shape {
     }
 
     public Color getColor() {
-        return color.get();
+        return color;
     }
 
     public void setColor(Color color) {
-        this.color.set(color);
-    }
-
-    public ObjectProperty<Color> colorProperty() {
-        return color;
+        this.color = color;
     }
 
     public abstract void draw(GraphicsContext context);
