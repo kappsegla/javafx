@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.iths.tt.javafxtt.controller.CanvasViewController;
 
 import java.io.IOException;
 
@@ -14,6 +15,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("JavaFX Chat");
         stage.setScene(scene);
+        CanvasViewController controller = fxmlLoader.getController();
+        controller.init(stage);
         stage.show();
     }
 
